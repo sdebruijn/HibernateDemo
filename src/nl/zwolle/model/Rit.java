@@ -8,6 +8,11 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * @author reindert
+ *
+ * Een entiteit voor het vastleggen van mijn kilometerregistratie voor autoritten.
+ */
 @Entity
 public class Rit {
 
@@ -15,7 +20,7 @@ public class Rit {
 	private String omschrijving;
 	private BigDecimal start;
 	private BigDecimal end;
-	
+	private Boolean business;
 
 	@Id
 	@GeneratedValue(generator="increment")
@@ -55,5 +60,17 @@ public class Rit {
 	public void setEnd(BigDecimal end) {
 		this.end = end;
 	}
+
+	public Boolean getBusiness() {
+		return business;
+	}
+
+	public void setBusiness(Boolean business) {
+		this.business = business;
+	}
 	
+	@Override
+	public String toString(){
+		return this.omschrijving;
+	}
 }
