@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import nl.zwolle.model.Rit;
 import nl.zwolle.model.RitDao;
@@ -20,7 +19,7 @@ public class RittenRegistratie {
 	 */
 	@RequestMapping("/")
 	public String overzicht(Model model) {
-		// model.addAttribute("ritten", RitDao.all());
+		model.addAttribute("ritten", RitDao.all());
 		return "overzicht";
 	}
 
@@ -48,12 +47,11 @@ public class RittenRegistratie {
 		}
 	}
 	
-
 	
 	/**
 	 * Verwijdert gegeven rit -- zonder om bevestiging te vragen ;)
 	 */
-	/*@RequestMapping(value="/delete/{id}")
+	@RequestMapping(value="/delete/{id}")
 	public String deleteView(@PathVariable String id){
 		Long key;
 		try{
@@ -66,12 +64,12 @@ public class RittenRegistratie {
 
 		RitDao.remove(key);
 		return "redirect:/";
-	}*/
+	}
 	
-	/*
+	
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String nieuw(String omschrijving, BigDecimal start, BigDecimal end, Boolean business){
 		RitDao.create(omschrijving, start, end, business);
 		return "redirect:/";
-	}*/
+	}
 }
